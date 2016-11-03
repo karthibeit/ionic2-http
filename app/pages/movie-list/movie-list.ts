@@ -11,18 +11,21 @@ import {MovieInfo} from '../movie-info/movie-info';
 export class MovieListPage {
 
 	movies: Array<any>;
+	error: any;
 
     constructor(private navController: NavController, private movieService: MovieService) {
 
     }
   
 	searchMovieDB(event, key) {
+		
 		if(event.target.value.length > 2) {
 			this.movieService.searchMovies(event.target.value).subscribe(
-				data => {
-					this.movies = data.results; 
-					console.log(data);
+				data1 => {
+					this.movies = data1.results; 
+					console.log(data1);
 				},
+				
 				err => {
 					console.log(err);
 				},
